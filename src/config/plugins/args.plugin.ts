@@ -35,7 +35,7 @@ export const yarg = yargs(hideBin(process.argv))
   .option("fileName", {
     alias: "f",
     type: "string",
-    default: "multiplication",
+    default: "archivo-table",
     describe: "Nombre del archivo a guardar",
   })
   .check((argv, options) => {
@@ -50,6 +50,19 @@ export const yarg = yargs(hideBin(process.argv))
         "El límite debe ser un número y ademas ser un valor positivo"
       );
 
+    // ⚠️ Validación de flags sin --print
+    const userPassedFileName =
+      process.argv.includes("--fileName") || process.argv.includes("-f");
+    const userPassedDestination =
+      process.argv.includes("--destination") || process.argv.includes("-d");
+
+    if (!argv.print && (userPassedFileName || userPassedDestination)) {
+      throw new Error(
+        "⚠️ Atención:\nHas especificado '--fileName' o '--destination', pero no activaste el flag '--print'.\nEstas opciones serán ignoradas si no usas '--print' (o '-p')."
+      );
+    }
+
     return true; //retorna true si todo está bien
   })
   .parseSync();
+//

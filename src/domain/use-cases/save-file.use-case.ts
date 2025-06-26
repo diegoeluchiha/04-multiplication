@@ -20,12 +20,12 @@ export class SaveFile implements SaveFileUseCase {
       // const outputPath = "outputs";
       fs.mkdirSync(fileDestination, { recursive: true }); // Ensure the directory exists
       fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
-      console.log(
-        `File saved successfully at ${fileDestination}/${fileName}.txt`
-      );
+      // console.log(
+      //   `File saved successfully at ${fileDestination}/${fileName}.txt`
+      // );
       return true; // Indicate success
     } catch (error) {
-      console.error("Error saving file:", error);
+      // console.error("Error saving file:", error);
       return false; // Indicate failure
     }
   }

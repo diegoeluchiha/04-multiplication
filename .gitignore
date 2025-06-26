@@ -4,3 +4,5 @@ dist/
 outputs/
 .vscode/
 .DS_Store
+test-destination/
+coverage/

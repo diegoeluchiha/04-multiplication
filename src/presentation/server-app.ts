@@ -12,18 +12,8 @@ interface RunOptions {
 
 export class ServerApp {
   static run({ base, limit, show, print, destination, fileName }: RunOptions) {
-    console.log("server running... siii");
-    // ✅ Validación lógica: opciones sin print
-    if (
-      !print &&
-      (fileName !== "multiplication" || destination !== "outputs")
-    ) {
-      console.warn(`
-        ⚠️ Atención:
-        Estás usando --fileName o --destination, pero no activaste el flag --print.
-        Estas opciones no se aplicarán sin --print (-p).
-      `);
-    }
+    console.log("Server running...");
+
     const table = new CreateTable().execute({
       base,
       limit,
